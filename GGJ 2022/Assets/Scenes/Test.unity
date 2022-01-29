@@ -3433,8 +3433,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletUI: {fileID: 232314043}
-  MagCapacity: 0
-  coolDown: 0
+  MagCapacity: 15
+  coolDown: 3
 --- !u!1 &2091873784
 GameObject:
   m_ObjectHideFlags: 0
