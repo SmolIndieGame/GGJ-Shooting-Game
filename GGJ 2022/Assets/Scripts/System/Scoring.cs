@@ -5,6 +5,8 @@ using TMPro;
 
 public class Scoring : MonoBehaviour
 {
+    public static Scoring I { get; private set; }
+
     public Timing timer;
     public TMP_Text gui;
 
@@ -19,6 +21,11 @@ public class Scoring : MonoBehaviour
     public void Earn()
     {
         this.enemyScore += enemyKillBonus;
+    }
+
+    private void Awake()
+    {
+        I = this;
     }
 
     void Update()

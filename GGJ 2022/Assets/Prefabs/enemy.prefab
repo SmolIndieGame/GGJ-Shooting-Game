@@ -160,7 +160,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ca1ae3ff1b8ac844a75972e6fcfbfe0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stasisTime: 0.2
+  stasisTime: 0.1
 --- !u!114 &4541002253185513645
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -200,8 +200,8 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 10
+  m_Mass: 0.5
+  m_LinearDrag: 15
   m_AngularDrag: 1
   m_GravityScale: 0
   m_Material: {fileID: 0}
