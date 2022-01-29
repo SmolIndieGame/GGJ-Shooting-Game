@@ -21,7 +21,7 @@ public class PlayerMovement : MonoBehaviour
         movement.y = Input.GetAxisRaw("Vertical");
 
         mousePos = cam.ScreenToViewportPoint(Input.mousePosition);
-        transform.up = mousePos;
+        transform.up = movement;
     }
 
     void FixedUpdate()

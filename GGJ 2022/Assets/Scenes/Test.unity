@@ -306,13 +306,10 @@ MonoBehaviour:
   movementSpeed: 5
   rb: {fileID: 1322434030}
   movement: {x: 0, y: 0}
-<<<<<<< HEAD
   cam: {fileID: 1336052051}
   mousePos: {x: 0, y: 0}
   lookDir: {x: 0, y: 0}
   angle: 0
-=======
->>>>>>> a8bd06c750982749cec19bca92da2192df684023
 --- !u!1 &1336052049
 GameObject:
   m_ObjectHideFlags: 0
