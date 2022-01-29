@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour, IObjectPooled<Enemy>
+public class EnemyMovement : MonoBehaviour, IObjectPooled<EnemyMovement>
 {
     Rigidbody2D rb;
 
@@ -10,7 +10,7 @@ public class Enemy : MonoBehaviour, IObjectPooled<Enemy>
 
     Transform target;
 
-    public PoolHandler<Enemy> poolHandler { get; set; }
+    public PoolHandler<EnemyMovement> poolHandler { get; set; }
 
     private void Awake()
     {
