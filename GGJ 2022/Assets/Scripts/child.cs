@@ -7,7 +7,7 @@ public class child : MonoBehaviour
     // Start is called before the first frame update
     [SerializeField]float movespeed=3;
     [SerializeField] GameObject Hpbar;
-    [SerializeField]int Hp=5;
+    [SerializeField]int Hp=3;
 
     Watch invincibleTimer;
     Watch flashingTimer;
@@ -46,13 +46,24 @@ if (invincibleTimer.TimeOut)
         
     void ModifyHP(int num){
         Hp+=num;
-        if (Hp>5){
-            Hp=5;
+        if (Hp>3){
+            Hp=3;
         }
         else if (Hp<=0){
             Hp=0;
         }
-        Debug.Log(Hp);
+        UpdateHp();
+    }
+    void UpdateHp(){
+        for(int i=0;i<Hpbar.transform.childCount;i++){
+            if(Hp>i){
+                Hpbar.transform.GetChild(i).gameObject.SetActive(true);
+            }
+            else{
+            Hpbar.transform.GetChild(i).gameObject.SetActive(false);
+        }
+        }
+        
     }
 
     void UpdateHp()

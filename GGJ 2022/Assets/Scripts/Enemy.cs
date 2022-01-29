@@ -13,7 +13,6 @@ public class Enemy : MonoBehaviour, IObjectPooled
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-        OnGet();
     }
 
     public void OnGet()
