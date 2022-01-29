@@ -21,7 +21,7 @@ public class PlayerBulletHandle : MonoBehaviour
     private void Start()
     {
         reloadCoolDown = new Watch(coolDown, true, Watch.StartingState.Full);
-        bulletInBag = 30;
+        bulletInBag = 24;
         bulletInMag = MagCapacity;
 
         bulletUI.UpdateUI(bulletInMag, bulletInBag);
