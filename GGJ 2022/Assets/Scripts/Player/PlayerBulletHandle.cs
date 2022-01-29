@@ -50,10 +50,14 @@ public class PlayerBulletHandle : MonoBehaviour
     public void AddBullet()
     {
         bulletInBag += bulletItemAmount;
+        bulletUI.UpdateUI(bulletInMag, bulletInBag);
     }
 
     private void Update()
     {
+        if (!reloading && bulletInBag > 0 && Input.GetButtonDown("Fire2"))
+            Reload();
+
         if (reloading && reloadCoolDown.TimeOut)
         {
             reloading = false;
