@@ -11,6 +11,7 @@ public class PlayerHealth : MonoBehaviour
     public bool immutable;
     public Sprite emptyHeart;
     public Sprite heart;
+    public AudioClip gotHit;
 
     public GameObject hpbar;
 
@@ -29,6 +30,7 @@ public class PlayerHealth : MonoBehaviour
     {
         this.hp --;
         UpdateHPGUI();
+        Sounds.I.Play(gotHit);
     }
 
     void UpdateHPGUI()

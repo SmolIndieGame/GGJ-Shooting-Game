@@ -7,6 +7,8 @@ public class PlayerBulletHandle : MonoBehaviour
     public UpdateBulletAmount bulletUI;
 
     [Header("Data")]
+    public AudioClip noBulletSound;
+    public AudioClip reloadSound;
     public int bulletItemAmount;
     public int startingBullet = 24;
     public int MagCapacity;
@@ -40,13 +42,17 @@ public class PlayerBulletHandle : MonoBehaviour
             return true;
         }
 
-        if (!reloading && bulletInBag > 0)
-            Reload();
+        if (!reloading)
+            if (bulletInBag > 0)
+                Reload();
+            else
+                Sounds.I.Play(noBulletSound);
         return false;
     }
 
     public void Reload()
     {
+        Sounds.I.Play(reloadSound);
         reloadCoolDown.Reset();
         reloading = true;
     }

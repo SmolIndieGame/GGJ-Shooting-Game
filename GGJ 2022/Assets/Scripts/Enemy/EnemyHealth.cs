@@ -8,6 +8,7 @@ public class EnemyHealth : MonoBehaviour
     EnemyMovement movement;
 
     [Header("Data")]
+    public AudioClip[] sound;
     public float knockback;
 
     [Header("Current")]
@@ -26,6 +27,8 @@ public class EnemyHealth : MonoBehaviour
 
     public void Damage(float damage, Vector2 normal)
     {
+        Sounds.I.Play(sound[Random.Range(0, sound.Length)]);
+
         curLife -= damage;
         self.stasisTimer.Reset();
         movement.AddForce(normal.normalized * -1, knockback);
