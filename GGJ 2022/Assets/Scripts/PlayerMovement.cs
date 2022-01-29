@@ -21,15 +21,14 @@ public class PlayerMovement : MonoBehaviour
         movement.y = Input.GetAxisRaw("Vertical");
 
         mousePos = cam.ScreenToViewportPoint(Input.mousePosition);
-        transform.up = movement;
+        if(movement.x != 0 & movement.y !=0)
+        {
+            transform.up = movement;
+        }
     }
 
     void FixedUpdate()
     {
         rb.MovePosition(rb.position + movement * movementSpeed * Time.fixedDeltaTime);
-        
-        //lookDir = mousePos - rb.position;
-        //angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 90f;
-        //rb.rotation = angle;
     }
 }
