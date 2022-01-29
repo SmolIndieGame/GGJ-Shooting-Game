@@ -29,6 +29,9 @@ public class PlayerBulletHandle : MonoBehaviour
 
     public bool UseBullet()
     {
+        if (reloading)
+            return false;
+
         if (bulletInMag > 0)
         {
             bulletInMag--;
