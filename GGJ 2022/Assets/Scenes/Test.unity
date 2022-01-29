@@ -133,9 +133,10 @@ GameObject:
   m_Component:
   - component: {fileID: 2726650}
   - component: {fileID: 2726651}
-  m_Layer: 3
+  - component: {fileID: 2726652}
+  m_Layer: 0
   m_Name: Handle
-  m_TagString: Untagged
+  m_TagString: WheelChairHandle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
