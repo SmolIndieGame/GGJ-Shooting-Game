@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class PlayerAttack : PoolHandler<Bullet>
 {
+    PlayerBulletHandle bulletHandle;
+
     public Bullet bulletPf;
     public Transform aimmer;
 
@@ -16,16 +18,18 @@ public class PlayerAttack : PoolHandler<Bullet>
 
     private void Start()
     {
+        bulletHandle = GetComponent<PlayerBulletHandle>();
         fireCoolDown = new Watch(coolDown, true, Watch.StartingState.Full);
     }
 
     private void Update()
     {
-        if (fireCoolDown.TimeOut && Input.GetButton("Fire1"))
+        if (fireCoolDown.TimeOut && Input.GetButtonDown("Fire1") && bulletHandle.UseBullet())
         {
             Bullet obj = Spawn();
             float angle = aimmer.eulerAngles.z + Random.Range(-inaccuracy, inaccuracy);
             obj.Setup(damage, transform.position, (float)angle);
+
             fireCoolDown.Reset();
         }
     }
