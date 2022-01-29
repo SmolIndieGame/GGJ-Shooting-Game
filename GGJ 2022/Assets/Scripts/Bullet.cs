@@ -19,7 +19,8 @@ public class Bullet : MonoBehaviour, IObjectPooled<Bullet>
         int i;
         for (i = 0; i < raycastHit2Ds.Length; i++)
         {
-            if (raycastHit2Ds[i].collider.attachedRigidbody.CompareTag("Player"))
+            Rigidbody2D rb = raycastHit2Ds[i].collider.attachedRigidbody;
+            if (rb == null || !rb.CompareTag("Enemy"))
                 continue;
 
             target = raycastHit2Ds[i];
