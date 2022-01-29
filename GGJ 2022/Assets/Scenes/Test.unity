@@ -778,6 +778,7 @@ MonoBehaviour:
   hp: 10
   immutableTime: 3
   immutable: 0
+  hpbar: {fileID: 0}
 --- !u!114 &1322434036
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -785,7 +786,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1322434029}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0a5f4fe1e5d45dc46a87dc2a566f8c89, type: 3}
   m_Name: 
