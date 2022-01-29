@@ -1147,7 +1147,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06f5af3c208f9124bb7cfdf5f3b34d5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyPf: {fileID: 4541002253185513645, guid: 4459edcdd6ecd9845af03ad3cb647ae8, type: 3}
+  enemyPf: {fileID: 6002122021162111092, guid: 4459edcdd6ecd9845af03ad3cb647ae8, type: 3}
   cam: {fileID: 1336052051}
   interval: 2
 --- !u!4 &1034754282

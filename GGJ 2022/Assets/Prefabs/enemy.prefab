@@ -122,7 +122,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2616314753021434534}
+  - component: {fileID: 6002122021162111092}
   - component: {fileID: 4541002253185513645}
+  - component: {fileID: 8947964473421017566}
   - component: {fileID: -6223450491645060827}
   m_Layer: 0
   m_Name: enemy
@@ -146,6 +148,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6002122021162111092
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2616314753021434533}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ca1ae3ff1b8ac844a75972e6fcfbfe0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stasisTime: 0.2
 --- !u!114 &4541002253185513645
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -159,6 +174,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 2
+--- !u!114 &8947964473421017566
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2616314753021434533}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 182c07abee2ce224eadd3099d8d4206a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxLife: 20
+  knockback: 1000
 --- !u!50 &-6223450491645060827
 Rigidbody2D:
   serializedVersion: 4
@@ -172,8 +201,8 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
+  m_LinearDrag: 10
+  m_AngularDrag: 1
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
