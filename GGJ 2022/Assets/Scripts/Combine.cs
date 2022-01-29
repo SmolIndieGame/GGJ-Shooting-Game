@@ -5,22 +5,30 @@ using UnityEngine;
 public class Combine : MonoBehaviour
 {
     public bool isCombinable;
-    public GameObject child;
-    public GameObject old;
+    public bool wheelMode;
+    public PlayerMovement child;
+    public WheelChairMovement old;
 
     public Collider2D childCol;
 
     void Update()
     {
-        if (Input.GetKeyUp("joystick button 1") & isCombinable)
+        if (Input.GetKeyUp("joystick button 1"))
         {
-            child.GetComponent<PlayerMovement>().enabled = !child.GetComponent<PlayerMovement>().enabled;
-            old.GetComponent<WheelChairMovement>().enabled = !old.GetComponent<WheelChairMovement>().enabled;
-            childCol.enabled = !childCol.enabled;
+            if(wheelMode){
+                SwithControl();
+                wheelMode = false;
+            }
+
+            if(isCombinable){
+                SwithControl();
+                wheelMode = true;
+            }
+
         }
     }
 
-    void OnTriggerEnter2D(Collider2D col)
+    void OnTriggerStay2D(Collider2D col)
     {
         
         if(col.gameObject.tag == "WheelChairHandle")
@@ -35,5 +43,12 @@ public class Combine : MonoBehaviour
         {
             isCombinable = false;
         }
+    }
+
+    void SwithControl()
+    {
+        child.enabled = !child.enabled;
+        old.enabled = !old.enabled;
+        childCol.enabled = !childCol.enabled;
     }
 }
