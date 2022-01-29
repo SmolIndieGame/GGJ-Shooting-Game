@@ -4460,6 +4460,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletUI: {fileID: 232314043}
   bulletItemAmount: 12
+  startingBullet: 24
   MagCapacity: 12
   coolDown: 2.5
 --- !u!114 &1831405527
