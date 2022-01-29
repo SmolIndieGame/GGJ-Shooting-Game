@@ -433,6 +433,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 232314040}
+  - component: {fileID: 232314043}
   - component: {fileID: 232314042}
   - component: {fileID: 232314041}
   m_Layer: 5
@@ -490,8 +491,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4294967040
+  m_fontColor: {r: 0, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -558,6 +559,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 232314039}
   m_CullTransparentMesh: 1
+--- !u!114 &232314043
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 232314039}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a783727a033eb874bb6d838591b15fa0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bullet: {fileID: 232314041}
 --- !u!1 &253725782
 GameObject:
   m_ObjectHideFlags: 0
@@ -3243,6 +3257,7 @@ GameObject:
   - component: {fileID: 1831405518}
   - component: {fileID: 1831405522}
   - component: {fileID: 1831405523}
+  - component: {fileID: 1831405526}
   - component: {fileID: 1831405524}
   - component: {fileID: 1831405525}
   m_Layer: 3
@@ -3405,6 +3420,21 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.2, y: 1.2}
   m_EdgeRadius: 0
+--- !u!114 &1831405526
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1831405517}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6027b7c0e00b1794b9914154da4ff9be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletUI: {fileID: 232314043}
+  MagCapacity: 0
+  coolDown: 0
 --- !u!1 &2091873784
 GameObject:
   m_ObjectHideFlags: 0
