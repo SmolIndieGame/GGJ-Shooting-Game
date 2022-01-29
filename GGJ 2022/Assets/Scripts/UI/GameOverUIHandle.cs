@@ -13,10 +13,12 @@ public class GameOverUIHandle : MonoBehaviour
     {
         gameObject.SetActive(true);
         endScore.text = ingameScore.text;
+        Time.timeScale = 0;
     }
 
     public void Restart()
     {
+        Time.timeScale = 1;
         SceneManager.LoadScene("Test");
     }
 }

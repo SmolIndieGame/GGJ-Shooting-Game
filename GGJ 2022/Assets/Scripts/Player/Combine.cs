@@ -15,16 +15,16 @@ public class Combine : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyUp("joystick button 1"))
+        if (Input.GetButtonDown("Fire3"))
         {
             if (wheelMode)
             {
-                SwithControl();
+                SwitchControl();
                 wheelMode = false;
             }
             else if (isCombinable)
             {
-                SwithControl();
+                SwitchControl();
                 wheelMode = true;
             }
 
@@ -33,7 +33,7 @@ public class Combine : MonoBehaviour
 
     void OnTriggerStay2D(Collider2D col)
     {
-        if(col.gameObject.tag == "WheelChairHandle")
+        if(col.gameObject.CompareTag("WheelChairHandle"))
         {
             isCombinable = true;
         }
@@ -41,13 +41,13 @@ public class Combine : MonoBehaviour
 
     void OnTriggerExit2D(Collider2D col)
     {
-        if (col.gameObject.tag == "WheelChairHandle")
+        if (col.gameObject.CompareTag("WheelChairHandle"))
         {
             isCombinable = false;
         }
     }
 
-    void SwithControl()
+    void SwitchControl()
     {
         child.enabled = !child.enabled;
         old.enabled = !old.enabled;

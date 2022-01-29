@@ -5,20 +5,18 @@ using UnityEngine;
 public class WheelChairMovement : MonoBehaviour
 {
     public float movementSpeed = 5f;
-    public GameObject child;
     public Vector2 childOffset;
+    public GameObject child;
     public Rigidbody2D rb;
 
     Vector2 movement;
 
-    // Update is called once per frame
     void Update()
     {
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
 
-        
-        if(movement.x != 0 & movement.y !=0)
+        if (movement != Vector2.zero)
         {
             transform.up = movement;
             child.transform.up = movement;
@@ -27,7 +25,7 @@ public class WheelChairMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        rb.MovePosition(rb.position + movement * movementSpeed * Time.fixedDeltaTime);
+        rb.MovePosition(rb.position + movementSpeed * Time.fixedDeltaTime * movement.normalized);
     }
 
     void LateUpdate()

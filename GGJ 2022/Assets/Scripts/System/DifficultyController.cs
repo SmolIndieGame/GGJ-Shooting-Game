@@ -4,5 +4,10 @@ using UnityEngine;
 
 public class DifficultyController : MonoBehaviour
 {
-    public DifficultyController I;
+    public static DifficultyController I { get; private set; }
+
+    private void Awake()
+    {
+        I = this;
+    }
 }
