@@ -8,6 +8,7 @@ public class PlayerBulletHandle : MonoBehaviour
 
     [Header("Data")]
     public int bulletItemAmount;
+    public int startingBullet = 24;
     public int MagCapacity;
     public float coolDown;
 
@@ -21,7 +22,7 @@ public class PlayerBulletHandle : MonoBehaviour
     private void Start()
     {
         reloadCoolDown = new Watch(coolDown, true, Watch.StartingState.Full);
-        bulletInBag = 24;
+        bulletInBag = startingBullet;
         bulletInMag = MagCapacity;
 
         bulletUI.UpdateUI(bulletInMag, bulletInBag);
