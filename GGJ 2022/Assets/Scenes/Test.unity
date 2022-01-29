@@ -438,7 +438,6 @@ GameObject:
   m_Layer: 6
   m_Name: childcollider
   m_TagString: Untagged
-=======
   m_Name: collider
   m_TagString: Player
   m_Icon: {fileID: 0}
