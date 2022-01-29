@@ -5,6 +5,7 @@ using UnityEngine;
 public class WheelChairMovement : MonoBehaviour
 {
     public float movementSpeed = 5f;
+    public GameObject child;
     public Vector2 childOffset;
     public Rigidbody2D rb;
     public Rigidbody2D rb2;
@@ -27,6 +28,7 @@ public class WheelChairMovement : MonoBehaviour
         if(movement.x != 0 & movement.y !=0)
         {
             transform.up = movement;
+            child.transform.up = movement;
         }
     }
 
@@ -34,6 +36,10 @@ public class WheelChairMovement : MonoBehaviour
     {
         rb2.MovePosition(rb2.position + movement * movementSpeed * Time.fixedDeltaTime);
         rb3.MovePosition(rb2.position);
-        rb.MovePosition(rb3.position + childOffset);
+    }
+
+    void LateUpdate()
+    {
+        child.transform.position = (Vector2)transform.TransformPoint(childOffset);
     }
 }
