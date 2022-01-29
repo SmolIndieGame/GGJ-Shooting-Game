@@ -608,7 +608,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyPf: {fileID: 4541002253185513645, guid: 4459edcdd6ecd9845af03ad3cb647ae8, type: 3}
   cam: {fileID: 1336052051}
-  interval: 1
+  interval: 2
 --- !u!4 &1034754282
 Transform:
   m_ObjectHideFlags: 0
@@ -668,6 +668,7 @@ GameObject:
   - component: {fileID: 1322434032}
   - component: {fileID: 1322434033}
   - component: {fileID: 1322434034}
+  - component: {fileID: 1322434035}
   m_Layer: 0
   m_Name: Child
   m_TagString: Player
@@ -743,7 +744,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isCombinable: 0
-  combined: 0
   child: {fileID: 1322434029}
   old: {fileID: 1831405517}
 --- !u!58 &1322434034
@@ -762,6 +762,21 @@ CircleCollider2D:
   m_Offset: {x: -0.05, y: 0.16}
   serializedVersion: 2
   m_Radius: 0.55
+--- !u!114 &1322434035
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1322434029}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b156bc462817d254d9b7609e4a0726d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hp: 10
+  immutableTime: 3
+  immutable: 0
 --- !u!1 &1336052049
 GameObject:
   m_ObjectHideFlags: 0
@@ -1217,7 +1232,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0eeb8f15141d8384d80401f4d5e1cc26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 5
+  movementSpeed: 4
   child: {fileID: 1322434029}
   childOffset: {x: 0, y: -1}
   rb: {fileID: 1831405519}
