@@ -8,7 +8,6 @@ public class EnemyHealth : MonoBehaviour
     EnemyMovement movement;
 
     [Header("Data")]
-    public float maxLife;
     public float knockback;
 
     [Header("Current")]
@@ -22,14 +21,14 @@ public class EnemyHealth : MonoBehaviour
 
     public void Init()
     {
-        curLife = maxLife;
+        curLife = DifficultyController.I.enemyHealth;
     }
 
     public void Damage(float damage, Vector2 normal)
     {
         curLife -= damage;
         self.stasisTimer.Reset();
-        movement.AddForce(normal.normalized * (-1), knockback);
+        movement.AddForce(normal.normalized * -1, knockback);
         if (curLife <= 0)
         {
             Scoring.I.Earn();

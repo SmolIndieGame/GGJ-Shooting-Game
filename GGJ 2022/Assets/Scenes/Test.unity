@@ -1446,9 +1446,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 1576171483
+  m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
   m_Color: {r: 0.022392264, g: 0.6981132, b: 0.038550716, a: 1}
   m_FlipX: 0
@@ -1703,7 +1703,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyPf: {fileID: 6002122021162111092, guid: 4459edcdd6ecd9845af03ad3cb647ae8, type: 3}
   cam: {fileID: 1336052051}
-  interval: 2
 --- !u!4 &1034754282
 Transform:
   m_ObjectHideFlags: 0
@@ -2383,7 +2382,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51d6b13b4b5ffc244ac61d739525046c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 6
+  movementSpeed: 6.5
   rb: {fileID: 1322434030}
 --- !u!114 &1322434033
 MonoBehaviour:
@@ -4098,6 +4097,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f9a6722114210b4b90402c10b4fdffc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timing: {fileID: 1766445367}
+  startingDifficulty: 0
+  difficulties:
+  - {fileID: 11400000, guid: 55c1523e49bfa83479a10564562188d9, type: 2}
 --- !u!114 &1766445367
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -5,6 +5,7 @@ using UnityEngine;
 public class Enemy : MonoBehaviour, IObjectPooled<Enemy>
 {
     EnemyHealth health;
+    EnemyMovement movement;
 
     [Header("Data")]
     public float stasisTime;
@@ -16,11 +17,13 @@ public class Enemy : MonoBehaviour, IObjectPooled<Enemy>
     private void Awake()
     {
         health = GetComponent<EnemyHealth>();
+        movement = GetComponent<EnemyMovement>();
         stasisTimer = new Watch(stasisTime, true, Watch.StartingState.Full);
     }
     public void OnGet()
     {
         health.Init();
+        movement.Init();
     }
     public void OnReturn() { }
 

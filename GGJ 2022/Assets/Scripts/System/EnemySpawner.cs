@@ -6,7 +6,6 @@ public class EnemySpawner : PoolHandler<Enemy>
 {
     [SerializeField] Enemy enemyPf;
     [SerializeField] Camera cam;
-    [SerializeField] float interval;
 
     Watch watch;
 
@@ -14,8 +13,11 @@ public class EnemySpawner : PoolHandler<Enemy>
 
     private void Start()
     {
-        watch = new Watch(interval, true);
+        DifficultyController.I.onDataUpdate += ChangeInterval;
+        watch = new Watch(DifficultyController.I.enemySpawningInterval, true);
     }
+
+    void ChangeInterval() => watch.SetNewDuration(DifficultyController.I.enemySpawningInterval);
 
     private void Update()
     {

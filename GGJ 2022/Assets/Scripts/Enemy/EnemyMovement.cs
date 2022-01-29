@@ -7,7 +7,7 @@ public class EnemyMovement : MonoBehaviour
     Enemy self;
     Rigidbody2D rb;
 
-    public float moveSpeed;
+    float moveSpeed;
 
     Transform target;
 
@@ -18,13 +18,17 @@ public class EnemyMovement : MonoBehaviour
         target = EnemyMovementHandle.I.GetTarget(gameObject).transform;
     }
 
+    public void Init()
+    {
+        moveSpeed = DifficultyController.I.enemySpeed;
+    }
+
     private void FixedUpdate()
     {
-        Vector2 direction = (target.position - transform.position).normalized;
+        transform.up = target.position - transform.position;
         if (self.stasisTimer.TimeOut)
         {
-            rb.MovePosition(rb.position + direction * (moveSpeed * Time.fixedDeltaTime));
-            transform.up = direction;
+            rb.MovePosition(rb.position + (Vector2)transform.up * (moveSpeed * Time.fixedDeltaTime));
         }
     }
 

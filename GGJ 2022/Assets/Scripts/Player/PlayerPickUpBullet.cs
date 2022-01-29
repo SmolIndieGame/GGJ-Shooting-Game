@@ -12,7 +12,7 @@ public class PlayerPickUpBullet : MonoBehaviour
         canPickUpBullet = true;
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerStay2D(Collider2D collision)
     {
         if (canPickUpBullet && !HasBullet && collision.CompareTag("BulletItem"))
         {

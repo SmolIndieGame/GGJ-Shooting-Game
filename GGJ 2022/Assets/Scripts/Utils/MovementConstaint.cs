@@ -18,6 +18,6 @@ public class MovementConstaint : MonoBehaviour
 
     private void LateUpdate()
     {
-        transform.position = screenBound.ClosestPoint(transform.position);
+        transform.position = (Vector2)screenBound.ClosestPoint(transform.position);
     }
 }

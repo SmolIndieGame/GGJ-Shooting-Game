@@ -10,7 +10,7 @@ public class EnemyMovementHandle : MonoBehaviour
     public GameObject child;
 
     public float distanceAggroFactor = 3;
-    public float distanceAggroMax = 30;
+    public float distanceAggroMax = 33;
 
     List<(GameObject, float)> aggroPoint;
     List<float> tempAggro = new List<float>();
@@ -22,7 +22,7 @@ public class EnemyMovementHandle : MonoBehaviour
         aggroPoint = new List<(GameObject, float)>
         {
             ( oldman, 10 ),
-            ( child, 15 )
+            ( child, 30 )
         };
     }
 
