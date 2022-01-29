@@ -19,7 +19,7 @@ public class EnemyHealth : MonoBehaviour
     {
         self = GetComponent<Enemy>();
         movement = GetComponent<EnemyMovement>();
-        score = GameObject.Find("Score");
+        score = GameObject.Find("ScoreSystem");
     }
 
     public void Init()
