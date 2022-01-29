@@ -133,7 +133,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2726650}
   - component: {fileID: 2726651}
-  - component: {fileID: 2726652}
   m_Layer: 0
   m_Name: Handle
   m_TagString: WheelChairHandle
@@ -2669,7 +2668,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   collider1: {fileID: 1831405521}
-  collider2: {fileID: 0}
+  collider2: {fileID: 163260498}
 --- !u!1 &2145873895
 GameObject:
   m_ObjectHideFlags: 0
