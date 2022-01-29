@@ -16,7 +16,7 @@ public class PlayerHealth : MonoBehaviour
     // Update is called once per frame
     void OnTriggerEnter2D(Collider2D col)
     {
-        if(col.gameObject.tag == "Enemy" & !immutable)
+        if(!immutable && col.gameObject.CompareTag("Enemy"))
         {
             Damage();
             RemoveEnemy(col.gameObject);
@@ -47,7 +47,7 @@ public class PlayerHealth : MonoBehaviour
 
     void RemoveEnemy(GameObject enemy)
     {
-        Destroy(enemy);
+        enemy.GetComponent<Enemy>().Return();
     }
 
     IEnumerator PlayerImmutable()
