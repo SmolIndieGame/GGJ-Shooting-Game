@@ -6,6 +6,7 @@ public class EnemyHealth : MonoBehaviour
 {
     Enemy self;
     EnemyMovement movement;
+    GameObject score;
 
     [Header("Data")]
     public float maxLife;
@@ -18,6 +19,7 @@ public class EnemyHealth : MonoBehaviour
     {
         self = GetComponent<Enemy>();
         movement = GetComponent<EnemyMovement>();
+        score = GameObject.Find("Score");
     }
 
     public void Init()
@@ -33,6 +35,7 @@ public class EnemyHealth : MonoBehaviour
         if (curLife <= 0)
         {
             self.Return();
+            score.GetComponent<Scoring>().Earn();
         }
     }
 }
