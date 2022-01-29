@@ -10,7 +10,7 @@ public class Combine : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyUp("joystick button 0") & isCombinable)
+        if (Input.GetKeyUp("joystick button 1") & isCombinable)
         {
             child.GetComponent<PlayerMovement>().enabled = !child.GetComponent<PlayerMovement>().enabled;
             old.GetComponent<WheelChairMovement>().enabled = !old.GetComponent<WheelChairMovement>().enabled;
