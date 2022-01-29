@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour
 {
+    public GameOverUIHandle gameOver;
     public int hp;
     public float immutableTime;
     public bool immutable;
@@ -42,7 +43,10 @@ public class PlayerHealth : MonoBehaviour
             {
                 hpbar.transform.GetChild(i).GetComponent<Image>().sprite = emptyHeart;
             }        
-        }            
+        }
+
+        if (hp <= 0)
+            gameOver.GameOver();
     }
 
     void RemoveEnemy(Enemy enemy)
