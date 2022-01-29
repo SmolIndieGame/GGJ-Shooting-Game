@@ -1,13 +1,14 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerAttack : PoolHandler<Bullet>
 {
     public Bullet bulletPf;
-    public float damage;
-
     public Transform aimmer;
+
+    [Header("Data")]
+    public float damage;
+    public float inaccuracy;
+    public float coolDown;
 
     Watch fireCoolDown;
 
@@ -15,7 +16,7 @@ public class PlayerAttack : PoolHandler<Bullet>
 
     private void Start()
     {
-        fireCoolDown = new Watch(1, true);
+        fireCoolDown = new Watch(coolDown, true, Watch.StartingState.Full);
     }
 
     private void Update()
@@ -23,20 +24,9 @@ public class PlayerAttack : PoolHandler<Bullet>
         if (fireCoolDown.TimeOut && Input.GetButton("Fire1"))
         {
             Bullet obj = Spawn();
-            //obj.transform.position = transform.position;
-            //obj.transform.rotation = aimmer.rotation;
+            float angle = aimmer.eulerAngles.z + Random.Range(-inaccuracy, inaccuracy);
+            obj.Setup(damage, transform.position, (float)angle);
             fireCoolDown.Reset();
         }
-    }
-
-    protected override Bullet Spawn()
-    {
-        Bullet obj = pool.Count > 0 ? pool.Dequeue() : Instantiate(prefab).GetComponent<Bullet>();
-        obj.Setup(damage);
-        obj.transform.position = transform.position;
-        obj.transform.rotation = aimmer.rotation;
-        obj.OnGet();
-        obj.gameObject.SetActive(true);
-        return obj;
     }
 }

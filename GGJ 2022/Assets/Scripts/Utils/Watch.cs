@@ -2,6 +2,13 @@ using UnityEngine;
 
 public class Watch
 {
+    public enum StartingState
+    {
+        Zero,
+        CurTime,
+        Full
+    }
+
     double startTime;
     double duration;
     bool useScaledTime;
@@ -9,15 +16,27 @@ public class Watch
 
     public bool TimeOut => timeOut || GetTime() - startTime >= duration;
 
-    public Watch(double duration, bool useScaledTime, bool startAtZero = false)
+    public Watch(double duration, bool useScaledTime, StartingState startingState = StartingState.CurTime)
     {
         this.duration = duration;
         this.useScaledTime = useScaledTime;
-        if (startAtZero)
-            startTime = 0;
-        else
-            startTime = GetTime();
-        timeOut = false;
+        switch (startingState)
+        {
+            case StartingState.Zero:
+                startTime = 0;
+                timeOut = false;
+                break;
+            case StartingState.CurTime:
+                startTime = GetTime();
+                timeOut = false;
+                break;
+            case StartingState.Full:
+                startTime = GetTime() + duration;
+                timeOut = true;
+                break;
+            default:
+                break;
+        }
     }
 
     private double GetTime()
