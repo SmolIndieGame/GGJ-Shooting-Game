@@ -2046,8 +2046,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isCombinable: 0
+  wheelMode: 0
   child: {fileID: 1322434032}
   old: {fileID: 1831405518}
+  childHand: {fileID: 1322434038}
+  bulletBag: {fileID: 1831405526}
   childCol: {fileID: 253725784}
 --- !u!58 &1322434034
 CircleCollider2D:
@@ -2125,7 +2128,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4816b1d7d36f8a44d89eb5f01354a541, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HaveBullet: 0
+  canPickUpBullet: 0
+  HasBullet: 0
 --- !u!1 &1336052049
 GameObject:
   m_ObjectHideFlags: 0
@@ -3490,7 +3494,6 @@ MonoBehaviour:
   bulletItemAmount: 0
   MagCapacity: 15
   coolDown: 3
-  ableToPickUpBullet: 1
 --- !u!1 &2091873784
 GameObject:
   m_ObjectHideFlags: 0
