@@ -14,12 +14,12 @@ public class PlayerHealth : MonoBehaviour
     public GameObject hpbar;
 
     // Update is called once per frame
-    void OnTriggerEnter2D(Collider2D col)
+    void OnTriggerStay2D(Collider2D col)
     {
-        if(!immutable && col.gameObject.CompareTag("Enemy"))
+        if(!immutable && col.attachedRigidbody != null && col.attachedRigidbody.CompareTag("Enemy"))
         {
             Damage();
-            RemoveEnemy(col.gameObject);
+            RemoveEnemy(col.attachedRigidbody.GetComponent<Enemy>());
             StartCoroutine(PlayerImmutable());
         }
     }
@@ -45,9 +45,9 @@ public class PlayerHealth : MonoBehaviour
         }            
     }
 
-    void RemoveEnemy(GameObject enemy)
+    void RemoveEnemy(Enemy enemy)
     {
-        enemy.GetComponent<Enemy>().Return();
+        enemy.Return();
     }
 
     IEnumerator PlayerImmutable()
