@@ -8,15 +8,8 @@ public class WheelChairMovement : MonoBehaviour
     public GameObject child;
     public Vector2 childOffset;
     public Rigidbody2D rb;
-    public Rigidbody2D rb2;
-    public Rigidbody2D rb3;
-    public Vector2 movement;
-    public Camera cam;
-    
-    public Vector2 mousePos;
-    public Vector2 lookDir;
 
-    public float angle;
+    Vector2 movement;
 
     // Update is called once per frame
     void Update()
@@ -34,8 +27,7 @@ public class WheelChairMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        rb2.MovePosition(rb2.position + movement * movementSpeed * Time.fixedDeltaTime);
-        rb3.MovePosition(rb2.position);
+        rb.MovePosition(rb.position + movement * movementSpeed * Time.fixedDeltaTime);
     }
 
     void LateUpdate()
