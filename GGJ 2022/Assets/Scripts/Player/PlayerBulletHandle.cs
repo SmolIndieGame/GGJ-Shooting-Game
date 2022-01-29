@@ -7,6 +7,7 @@ public class PlayerBulletHandle : MonoBehaviour
     public UpdateBulletAmount bulletUI;
 
     [Header("Data")]
+    public int bulletItemAmount;
     public int MagCapacity;
     public float coolDown;
 
@@ -20,7 +21,7 @@ public class PlayerBulletHandle : MonoBehaviour
     private void Start()
     {
         reloadCoolDown = new Watch(coolDown, true, Watch.StartingState.Full);
-        bulletInBag = 999;
+        bulletInBag = 30;
         bulletInMag = MagCapacity;
 
         bulletUI.UpdateUI(bulletInMag, bulletInBag);
@@ -35,7 +36,7 @@ public class PlayerBulletHandle : MonoBehaviour
             return true;
         }
 
-        if (!reloading)
+        if (!reloading && bulletInBag > 0)
             Reload();
         return false;
     }
@@ -46,13 +47,22 @@ public class PlayerBulletHandle : MonoBehaviour
         reloading = true;
     }
 
+    public void AddBullet()
+    {
+        bulletInBag += bulletItemAmount;
+    }
+
     private void Update()
     {
         if (reloading && reloadCoolDown.TimeOut)
         {
             reloading = false;
-            bulletInBag -= MagCapacity - bulletInMag;
-            bulletInMag = MagCapacity;
+            int needBullet = MagCapacity + bulletInMag;
+            if (bulletInBag <= needBullet)
+                bulletInMag += bulletInBag;
+            else
+                bulletInMag = MagCapacity;
+            bulletInBag = Mathf.Max(0, bulletInBag - needBullet);
 
             bulletUI.UpdateUI(bulletInMag, bulletInBag);
         }
