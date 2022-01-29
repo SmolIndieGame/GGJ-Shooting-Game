@@ -5,7 +5,6 @@ using UnityEngine;
 public class Combine : MonoBehaviour
 {
     public bool isCombinable;
-    public bool combined;
     public GameObject child;
     public GameObject old;
 
@@ -13,8 +12,6 @@ public class Combine : MonoBehaviour
     {
         if (Input.GetKeyUp("joystick button 0") & isCombinable)
         {
-            print("Combine");
-            //combined = true;
             child.GetComponent<PlayerMovement>().enabled = !child.GetComponent<PlayerMovement>().enabled;
             old.GetComponent<WheelChairMovement>().enabled = !old.GetComponent<WheelChairMovement>().enabled;
         }
