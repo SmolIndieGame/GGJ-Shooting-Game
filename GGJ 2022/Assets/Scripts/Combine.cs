@@ -19,7 +19,7 @@ public class Combine : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D col)
     {
-        if(col.gameObject.tag == "Player")
+        if(col.gameObject.tag == "WheelChairHandle")
         {
             isCombinable = true;
         }
@@ -27,7 +27,7 @@ public class Combine : MonoBehaviour
 
     void OnTriggerExit2D(Collider2D col)
     {
-            if(col.gameObject.tag == "Player")
+            if(col.gameObject.tag == "WheelChairHandle")
         {
             isCombinable = false;
         }
