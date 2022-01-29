@@ -14,9 +14,9 @@ public class PlayerHealth : MonoBehaviour
     public GameObject hpbar;
 
     // Update is called once per frame
-    void OnTriggerEnter2D(Collider2D col)
+    void OnCollisionEnter2D(Collision2D col)
     {
-        //Debug.Log(col.gameObject.name);
+        
         if(col.gameObject.tag == "Enemy" & !immutable)
         {
             Damage();

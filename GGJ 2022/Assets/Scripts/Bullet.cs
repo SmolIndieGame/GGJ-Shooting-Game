@@ -14,7 +14,7 @@ public class Bullet : MonoBehaviour, IObjectPooled<Bullet>
         transform.position = startPos;
         transform.eulerAngles = new Vector3(0, 0, startRot);
 
-        Vector2 targetPoint = default;
+        RaycastHit2D target = default;
         RaycastHit2D[] raycastHit2Ds = Physics2D.RaycastAll(transform.position, transform.up * 999, 999);
         int i;
         for (i = 0; i < raycastHit2Ds.Length; i++)
@@ -22,18 +22,19 @@ public class Bullet : MonoBehaviour, IObjectPooled<Bullet>
             if (raycastHit2Ds[i].collider.attachedRigidbody.CompareTag("Player"))
                 continue;
 
-            targetPoint = raycastHit2Ds[i].point;
+            target = raycastHit2Ds[i];
             break;
         }
         if (i == raycastHit2Ds.Length)
-        {
-            //transform.position += transform.up * 5;
             transform.localScale = new Vector3(1, 100, 1);
-        }
         else
         {
-            float distance = Vector2.Distance(transform.position, targetPoint);
-            //transform.position += transform.up * distance / 2;
+            float distance = Vector2.Distance(transform.position, target.point);
+            EnemyHealth enemyHealth = target.rigidbody.GetComponent<EnemyHealth>();
+            if (enemyHealth != null)
+            {
+                enemyHealth.Damage(damage, target.normal);
+            }
             transform.localScale = new Vector3(1, distance, 1);
         }
 

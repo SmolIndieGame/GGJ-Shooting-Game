@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemySpawner : PoolHandler<EnemyMovement>
+public class EnemySpawner : PoolHandler<Enemy>
 {
-    [SerializeField] EnemyMovement enemyPf;
+    [SerializeField] Enemy enemyPf;
     [SerializeField] Camera cam;
     [SerializeField] float interval;
 
@@ -37,7 +37,7 @@ public class EnemySpawner : PoolHandler<EnemyMovement>
 
             pos = cam.ViewportToWorldPoint(pos);
 
-            EnemyMovement enemy = Spawn();
+            Enemy enemy = Spawn();
             enemy.transform.position = pos;
 
             watch.Reset();
