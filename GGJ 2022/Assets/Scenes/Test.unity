@@ -2024,8 +2024,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isCombinable: 0
-  child: {fileID: 1322434029}
-  old: {fileID: 1831405517}
+  child: {fileID: 1322434032}
+  old: {fileID: 1831405518}
   childCol: {fileID: 253725784}
 --- !u!58 &1322434034
 CircleCollider2D:
