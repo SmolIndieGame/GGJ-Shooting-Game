@@ -1341,7 +1341,6 @@ GameObject:
   - component: {fileID: 1322434033}
   - component: {fileID: 1322434034}
   - component: {fileID: 1322434035}
-  - component: {fileID: 1322434036}
   m_Layer: 0
   m_Name: Child
   m_TagString: Player
@@ -1450,22 +1449,9 @@ MonoBehaviour:
   hp: 3
   immutableTime: 3
   immutable: 0
-  hpbar: {fileID: 0}
---- !u!114 &1322434036
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1322434029}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0a5f4fe1e5d45dc46a87dc2a566f8c89, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  movespeed: 3
-  Hpbar: {fileID: 0}
-  Hp: 3
+  emptyHeart: {fileID: 21300000, guid: 44245c561a9231344a006fd214352819, type: 3}
+  heart: {fileID: 21300000, guid: 2ce32e4b7b4246247b06f9065ac57dd3, type: 3}
+  hpbar: {fileID: 1351380156}
 --- !u!1 &1336052049
 GameObject:
   m_ObjectHideFlags: 0
@@ -2484,7 +2470,9 @@ MonoBehaviour:
   hp: 3
   immutableTime: 3
   immutable: 0
-  hpbar: {fileID: 0}
+  emptyHeart: {fileID: 21300000, guid: 44245c561a9231344a006fd214352819, type: 3}
+  heart: {fileID: 21300000, guid: 2ce32e4b7b4246247b06f9065ac57dd3, type: 3}
+  hpbar: {fileID: 1727233856}
 --- !u!114 &1831405523
 MonoBehaviour:
   m_ObjectHideFlags: 0
