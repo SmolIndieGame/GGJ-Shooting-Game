@@ -66,7 +66,20 @@ if (invincibleTimer.TimeOut)
         
     }
 
-
+    void UpdateHp()
+    {        
+        for(int i=0;i<Hpbar.transform.childCount;i++)
+        {   
+            if(Hp>i)
+            {   
+                Hpbar.transform.GetChild(i).gameObject.SetActive(true);            
+            }            
+            else
+            {
+                Hpbar.transform.GetChild(i).gameObject.SetActive(false);        
+            }        
+        }            
+    }
     
 
 }

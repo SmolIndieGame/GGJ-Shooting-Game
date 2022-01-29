@@ -12,20 +12,12 @@ public abstract class PoolHandler<T> : MonoBehaviour where T : MonoBehaviour, IO
 {
     protected abstract GameObject prefab { get; }
 
-    Queue<T> pool = new Queue<T>();
+    protected Queue<T> pool = new Queue<T>();
 
     protected virtual T Spawn()
     {
-        T obj;
-        if (pool.Count > 0)
-        {
-            obj = pool.Dequeue();
-            obj.gameObject.SetActive(true);
-            obj.OnGet();
-            return obj;
-        }
-
-        obj = Instantiate(prefab).GetComponent<T>();
+        T obj = pool.Count > 0 ? pool.Dequeue() : Instantiate(prefab).GetComponent<T>();
+        obj.OnGet();
         obj.gameObject.SetActive(true);
         return obj;
     }
