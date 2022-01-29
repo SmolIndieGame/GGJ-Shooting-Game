@@ -158,7 +158,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2d925021d1808b459b603c9194da0ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 4
+  moveSpeed: 2
 --- !u!50 &-6223450491645060827
 Rigidbody2D:
   serializedVersion: 4
@@ -192,7 +192,7 @@ GameObject:
   - component: {fileID: 8931318183141774591}
   m_Layer: 0
   m_Name: body
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
