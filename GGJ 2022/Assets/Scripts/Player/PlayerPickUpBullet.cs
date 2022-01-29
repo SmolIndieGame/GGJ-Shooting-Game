@@ -4,14 +4,20 @@ using UnityEngine;
 
 public class PlayerPickUpBullet : MonoBehaviour
 {
-    public bool HaveBullet;
+    public bool canPickUpBullet;
+    public bool HasBullet;
+
+    private void Start()
+    {
+        canPickUpBullet = true;
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (!HaveBullet && collision.CompareTag("BulletItem"))
+        if (canPickUpBullet && !HasBullet && collision.CompareTag("BulletItem"))
         {
             collision.gameObject.GetComponent<BulletItem>().Return();
-            HaveBullet = true;
+            HasBullet = true;
         }
     }
 }

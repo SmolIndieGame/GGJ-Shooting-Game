@@ -8,6 +8,8 @@ public class Combine : MonoBehaviour
     public bool wheelMode;
     public PlayerMovement child;
     public WheelChairMovement old;
+    public PlayerPickUpBullet childHand;
+    public PlayerBulletHandle bulletBag;
 
     public Collider2D childCol;
 
@@ -15,12 +17,13 @@ public class Combine : MonoBehaviour
     {
         if (Input.GetKeyUp("joystick button 1"))
         {
-            if(wheelMode){
+            if (wheelMode)
+            {
                 SwithControl();
                 wheelMode = false;
             }
-
-            if(isCombinable){
+            else if (isCombinable)
+            {
                 SwithControl();
                 wheelMode = true;
             }
@@ -30,7 +33,6 @@ public class Combine : MonoBehaviour
 
     void OnTriggerStay2D(Collider2D col)
     {
-        
         if(col.gameObject.tag == "WheelChairHandle")
         {
             isCombinable = true;
@@ -39,7 +41,7 @@ public class Combine : MonoBehaviour
 
     void OnTriggerExit2D(Collider2D col)
     {
-            if(col.gameObject.tag == "WheelChairHandle")
+        if (col.gameObject.tag == "WheelChairHandle")
         {
             isCombinable = false;
         }
@@ -50,5 +52,10 @@ public class Combine : MonoBehaviour
         child.enabled = !child.enabled;
         old.enabled = !old.enabled;
         childCol.enabled = !childCol.enabled;
+
+        if (childHand.HasBullet)
+            bulletBag.AddBullet();
+        childHand.HasBullet = false;
+        childHand.canPickUpBullet = !childHand.canPickUpBullet;
     }
 }
