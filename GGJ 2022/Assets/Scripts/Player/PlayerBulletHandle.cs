@@ -61,7 +61,7 @@ public class PlayerBulletHandle : MonoBehaviour
         if (reloading && reloadCoolDown.TimeOut)
         {
             reloading = false;
-            int needBullet = MagCapacity + bulletInMag;
+            int needBullet = MagCapacity - bulletInMag;
             if (bulletInBag <= needBullet)
                 bulletInMag += bulletInBag;
             else
