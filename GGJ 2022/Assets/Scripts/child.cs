@@ -54,19 +54,20 @@ if (invincibleTimer.TimeOut)
         }
         UpdateHp();
     }
-    void UpdateHp(){
-        for(int i=0;i<Hpbar.transform.childCount;i++){
-            if(Hp>i){
-                Hpbar.transform.GetChild(i).gameObject.SetActive(true);
-            }
-            else{
-            Hpbar.transform.GetChild(i).gameObject.SetActive(false);
-        }
-        }
-        
+    void UpdateHp()
+    {        
+        for(int i=0;i<Hpbar.transform.childCount;i++)
+        {   
+            if(Hp>i)
+            {   
+                Hpbar.transform.GetChild(i).gameObject.SetActive(true);            
+            }            
+            else
+            {
+                Hpbar.transform.GetChild(i).gameObject.SetActive(false);        
+            }        
+        }            
     }
-
-  
     
 
 }

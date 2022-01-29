@@ -2,13 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour, IObjectPooled
+public class EnemyMovement : MonoBehaviour, IObjectPooled<EnemyMovement>
 {
     Rigidbody2D rb;
 
     public float moveSpeed;
 
     Transform target;
+
+    public PoolHandler<EnemyMovement> poolHandler { get; set; }
 
     private void Awake()
     {

@@ -2,13 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface IObjectPooled
+public interface IObjectPooled<T> where T : MonoBehaviour, IObjectPooled<T>
 {
+    PoolHandler<T> poolHandler { get; set; }
+
     void OnGet();
     void OnReturn();
 }
 
-public abstract class PoolHandler<T> : MonoBehaviour where T : MonoBehaviour, IObjectPooled
+public abstract class PoolHandler<T> : MonoBehaviour where T : MonoBehaviour, IObjectPooled<T>
 {
     protected abstract GameObject prefab { get; }
 
@@ -16,7 +18,14 @@ public abstract class PoolHandler<T> : MonoBehaviour where T : MonoBehaviour, IO
 
     protected virtual T Spawn()
     {
-        T obj = pool.Count > 0 ? pool.Dequeue() : Instantiate(prefab).GetComponent<T>();
+        T obj;
+        if (pool.Count > 0)
+            obj = pool.Dequeue();
+        else
+        {
+            obj = Instantiate(prefab).GetComponent<T>();
+            obj.poolHandler = this;
+        }
         obj.OnGet();
         obj.gameObject.SetActive(true);
         return obj;
