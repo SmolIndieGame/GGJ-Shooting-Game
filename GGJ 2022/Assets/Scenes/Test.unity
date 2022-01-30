@@ -9038,7 +9038,7 @@ MonoBehaviour:
   damage: 10
   abilityDamage: 10
   inaccuracy: 3
-  abilityCoolDown: 10
+  abilityCoolDown: 8
   coolDown: 0.3
 --- !u!114 &1831405524
 MonoBehaviour:

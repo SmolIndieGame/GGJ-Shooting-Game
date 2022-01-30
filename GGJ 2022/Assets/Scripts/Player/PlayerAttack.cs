@@ -52,7 +52,7 @@ public class PlayerAttack : MonoBehaviour
             }
         }
 
-        if (Input.GetButtonDown("Fire2") && Time.timeAsDouble - lastAbilityTime >= abilityCoolDown)
+        if (Input.GetButtonDown("Fire2") && Time.timeSinceLevelLoadAsDouble - lastAbilityTime >= abilityCoolDown)
         {
             Bullet2 obj = spreadPool.Spawn();
             float angle = aimmer.eulerAngles.z + Random.Range(-inaccuracy, inaccuracy);
@@ -61,7 +61,7 @@ public class PlayerAttack : MonoBehaviour
             camMove.Shake(0.5f, 0.4f);
             Sounds.I.Play(fireSound, 0.8f);
 
-            lastAbilityTime = Time.timeAsDouble;
+            lastAbilityTime = Time.timeSinceLevelLoadAsDouble;
             abilityUI.UpdateCoolDown(lastAbilityTime);
         }
     }

@@ -14,7 +14,7 @@ public class UpdateAbility : MonoBehaviour
 
     private void Update()
     {
-        double t = Time.timeAsDouble - lastFire;
+        double t = Mathf.Min(maxCD, (float)(Time.timeSinceLevelLoadAsDouble - lastFire));
         cooldown.text = $"{(int)t}/{(int)maxCD}";
         cooldown.color = t >= maxCD ? onColor : offColor;
     }
