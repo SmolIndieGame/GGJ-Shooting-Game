@@ -1696,7 +1696,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1034754280}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 06f5af3c208f9124bb7cfdf5f3b34d5a, type: 3}
   m_Name: 
@@ -4536,7 +4536,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 1
+  m_LinearDrag: 10
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
@@ -4623,6 +4623,7 @@ MonoBehaviour:
   fireSound: {fileID: 8300000, guid: 9396dc818452ebd4fbee82ec15b28ce5, type: 3}
   gunOffset: {x: -0.1, y: 0.7}
   damage: 10
+  abilityDamage: 7
   inaccuracy: 3
   coolDown: 0.3
 --- !u!114 &1831405524

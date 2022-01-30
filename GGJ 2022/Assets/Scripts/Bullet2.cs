@@ -21,6 +21,7 @@ public class Bullet2 : MonoBehaviour, IObjectPooled<Bullet2>
     private void Update()
     {
         if (used) return;
+        used = true;
 
         List<Collider2D> touchedColliders = new List<Collider2D>();
         Physics2D.OverlapCollider(collider, new ContactFilter2D(), touchedColliders);
@@ -34,7 +35,7 @@ public class Bullet2 : MonoBehaviour, IObjectPooled<Bullet2>
             EnemyHealth enemyHealth = touchedColliders[i].attachedRigidbody.GetComponent<EnemyHealth>();
             if (enemyHealth != null)
             {
-                enemyHealth.Damage(damage, (touchedColliders[i].transform.position - transform.position).normalized);
+                enemyHealth.Damage(damage, (transform.position - touchedColliders[i].transform.position).normalized);
             }
         }
 

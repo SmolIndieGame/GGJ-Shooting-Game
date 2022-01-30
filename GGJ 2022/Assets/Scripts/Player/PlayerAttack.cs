@@ -12,6 +12,7 @@ public class PlayerAttack : MonoBehaviour
     public AudioClip fireSound;
     public Vector2 gunOffset;
     public float damage;
+    public float abilityDamage;
     public float inaccuracy;
     public float coolDown;
 
@@ -45,9 +46,10 @@ public class PlayerAttack : MonoBehaviour
             {
                 Bullet2 obj = spreadPool.Spawn();
                 float angle = aimmer.eulerAngles.z + Random.Range(-inaccuracy, inaccuracy);
-                obj.Setup(damage, aimmer.TransformPoint(gunOffset), (float)angle);
+                obj.Setup(abilityDamage, aimmer.TransformPoint(gunOffset), (float)angle);
                 Sounds.I.Play(fireSound, 0.8f);
-
+                GetComponent<Rigidbody2D>().AddForce(-aimmer.up * 1200);
+                
                 fireCoolDown.Reset();
             }
         }
