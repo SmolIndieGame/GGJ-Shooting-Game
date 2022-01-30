@@ -9,6 +9,7 @@ public class PlayerAttack : PoolHandler<Bullet>
 
     [Header("Data")]
     public AudioClip fireSound;
+    public Vector2 gunOffset;
     public float damage;
     public float inaccuracy;
     public float coolDown;
@@ -29,7 +30,7 @@ public class PlayerAttack : PoolHandler<Bullet>
         {
             Bullet obj = Spawn();
             float angle = aimmer.eulerAngles.z + Random.Range(-inaccuracy, inaccuracy);
-            obj.Setup(damage, transform.position, (float)angle);
+            obj.Setup(damage, aimmer.TransformPoint(gunOffset), (float)angle);
             Sounds.I.Play(fireSound, 0.8f);
 
             fireCoolDown.Reset();
