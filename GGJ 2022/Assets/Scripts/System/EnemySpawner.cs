@@ -2,18 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemySpawner : PoolHandler<Enemy>
+public class EnemySpawner : MonoBehaviour
 {
     [SerializeField] Enemy enemyPf;
     [SerializeField] Camera cam;
 
+    PoolHandler<Enemy> poolHandler;
     Watch watch;
-
-    protected override GameObject prefab => enemyPf.gameObject;
 
     private void Start()
     {
         DifficultyController.I.onDataUpdate += ChangeInterval;
+        poolHandler = new PoolHandler<Enemy>(enemyPf.gameObject);
         watch = new Watch(DifficultyController.I.enemySpawningInterval, true);
     }
 
@@ -39,7 +39,7 @@ public class EnemySpawner : PoolHandler<Enemy>
 
             pos = cam.ViewportToWorldPoint(pos);
 
-            Enemy enemy = Spawn();
+            Enemy enemy = poolHandler.Spawn();
             enemy.transform.position = pos;
 
             watch.Reset();

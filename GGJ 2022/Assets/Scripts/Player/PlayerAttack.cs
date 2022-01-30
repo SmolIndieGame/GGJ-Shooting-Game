@@ -1,10 +1,11 @@
 using UnityEngine;
 
-public class PlayerAttack : PoolHandler<Bullet>
+public class PlayerAttack : MonoBehaviour
 {
     PlayerBulletHandle bulletHandle;
 
     public Bullet bulletPf;
+    public Bullet2 bullet2Pf;
     public Transform aimmer;
 
     [Header("Data")]
@@ -14,26 +15,41 @@ public class PlayerAttack : PoolHandler<Bullet>
     public float inaccuracy;
     public float coolDown;
 
+    PoolHandler<Bullet> bulletPool;
+    PoolHandler<Bullet2> spreadPool;
     Watch fireCoolDown;
-
-    protected override GameObject prefab => bulletPf.gameObject;
 
     private void Start()
     {
         bulletHandle = GetComponent<PlayerBulletHandle>();
+
+        bulletPool = new PoolHandler<Bullet>(bulletPf.gameObject);
+        spreadPool = new PoolHandler<Bullet2>(bullet2Pf.gameObject);
         fireCoolDown = new Watch(coolDown, true, Watch.StartingState.Full);
     }
 
     private void Update()
     {
-        if (fireCoolDown.TimeOut && Input.GetButtonDown("Fire1") && bulletHandle.UseBullet())
+        if (fireCoolDown.TimeOut)
         {
-            Bullet obj = Spawn();
-            float angle = aimmer.eulerAngles.z + Random.Range(-inaccuracy, inaccuracy);
-            obj.Setup(damage, aimmer.TransformPoint(gunOffset), (float)angle);
-            Sounds.I.Play(fireSound, 0.8f);
+            if (Input.GetButtonDown("Fire1") && bulletHandle.UseBullet())
+            {
+                Bullet obj = bulletPool.Spawn();
+                float angle = aimmer.eulerAngles.z + Random.Range(-inaccuracy, inaccuracy);
+                obj.Setup(damage, aimmer.TransformPoint(gunOffset), (float)angle);
+                Sounds.I.Play(fireSound, 0.8f);
 
-            fireCoolDown.Reset();
+                fireCoolDown.Reset();
+            }
+            if (Input.GetButtonDown("Fire2") && bulletHandle.UseBullet(4))
+            {
+                Bullet2 obj = spreadPool.Spawn();
+                float angle = aimmer.eulerAngles.z + Random.Range(-inaccuracy, inaccuracy);
+                obj.Setup(damage, aimmer.TransformPoint(gunOffset), (float)angle);
+                Sounds.I.Play(fireSound, 0.8f);
+
+                fireCoolDown.Reset();
+            }
         }
     }
 }

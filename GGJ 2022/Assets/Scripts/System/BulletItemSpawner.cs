@@ -2,18 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BulletItemSpawner : PoolHandler<BulletItem>
+public class BulletItemSpawner : MonoBehaviour
 {
     [SerializeField] BulletItem bulletPf;
     [SerializeField] Camera cam;
     [SerializeField] float interval;
 
+    PoolHandler<BulletItem> poolHandler;
     Watch watch;
-
-    protected override GameObject prefab => bulletPf.gameObject;
 
     private void Start()
     {
+        poolHandler = new PoolHandler<BulletItem>(bulletPf.gameObject);
         watch = new Watch(interval, true);
     }
 
@@ -21,14 +21,15 @@ public class BulletItemSpawner : PoolHandler<BulletItem>
     {
         if (watch.TimeOut)
         {
-            Vector2 pos = new Vector2();
-
-            pos.x = Random.value;
-            pos.y = Random.value;
+            Vector2 pos = new Vector2
+            {
+                x = Random.Range(0.05f, 0.95f),
+                y = Random.Range(0.05f, 0.95f)
+            };
 
             pos = cam.ViewportToWorldPoint(pos);
 
-            BulletItem bullet = Spawn();
+            BulletItem bullet = poolHandler.Spawn();
             bullet.transform.position = pos;
 
             watch.Reset();

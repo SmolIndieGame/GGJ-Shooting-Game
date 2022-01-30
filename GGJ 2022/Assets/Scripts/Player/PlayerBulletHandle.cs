@@ -30,14 +30,14 @@ public class PlayerBulletHandle : MonoBehaviour
         bulletUI.UpdateUI(bulletInMag, bulletInBag);
     }
 
-    public bool UseBullet()
+    public bool UseBullet(int amount = 1)
     {
         if (reloading)
             return false;
 
-        if (bulletInMag > 0)
+        if (bulletInMag >= amount)
         {
-            bulletInMag--;
+            bulletInMag -= amount;
             bulletUI.UpdateUI(bulletInMag, bulletInBag);
             return true;
         }
@@ -65,8 +65,8 @@ public class PlayerBulletHandle : MonoBehaviour
 
     private void Update()
     {
-        if (!reloading && bulletInBag > 0 && Input.GetButtonDown("Fire2"))
-            Reload();
+        //if (!reloading && bulletInBag > 0 && Input.GetButtonDown("Fire2"))
+         //   Reload();
 
         if (reloading && reloadCoolDown.TimeOut)
         {

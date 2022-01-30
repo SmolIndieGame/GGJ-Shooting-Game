@@ -10,20 +10,25 @@ public interface IObjectPooled<T> where T : MonoBehaviour, IObjectPooled<T>
     void OnReturn();
 }
 
-public abstract class PoolHandler<T> : MonoBehaviour where T : MonoBehaviour, IObjectPooled<T>
+public class PoolHandler<T> where T : MonoBehaviour, IObjectPooled<T>
 {
-    protected abstract GameObject prefab { get; }
+    readonly GameObject prefab;
+    readonly Queue<T> pool;
 
-    protected Queue<T> pool = new Queue<T>();
+    public PoolHandler(GameObject prefab)
+    {
+        this.prefab = prefab;
+        pool = new Queue<T>();
+    }
 
-    protected virtual T Spawn()
+    public T Spawn()
     {
         T obj;
         if (pool.Count > 0)
             obj = pool.Dequeue();
         else
         {
-            obj = Instantiate(prefab).GetComponent<T>();
+            obj = Object.Instantiate(prefab).GetComponent<T>();
             obj.poolHandler = this;
         }
         obj.OnGet();
@@ -31,7 +36,7 @@ public abstract class PoolHandler<T> : MonoBehaviour where T : MonoBehaviour, IO
         return obj;
     }
 
-    public virtual void Return(T obj)
+    public void Return(T obj)
     {
         obj.gameObject.SetActive(false);
         obj.OnReturn();
