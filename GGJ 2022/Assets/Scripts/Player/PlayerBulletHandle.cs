@@ -42,11 +42,12 @@ public class PlayerBulletHandle : MonoBehaviour
             return true;
         }
 
-        if (!reloading)
+        /*if (!reloading)
             if (bulletInBag > 0)
                 Reload();
             else
-                Sounds.I.Play(noBulletSound);
+                Sounds.I.Play(noBulletSound);*/
+        Sounds.I.Play(noBulletSound);
         return false;
     }
 
@@ -65,7 +66,7 @@ public class PlayerBulletHandle : MonoBehaviour
 
     private void Update()
     {
-        if (!reloading && bulletInBag > 0 && Input.GetMouseButtonDown(2))
+        if (!reloading && bulletInBag > 0 && Input.GetButtonDown("Reload"))
             Reload();
 
         if (reloading && reloadCoolDown.TimeOut)

@@ -35,7 +35,7 @@ public class PlayerAttack : MonoBehaviour
     {
         if (fireCoolDown.TimeOut)
         {
-            if (Input.GetMouseButtonDown(0) && bulletHandle.UseBullet())
+            if (Input.GetButtonDown("Fire1") && bulletHandle.UseBullet())
             {
                 Bullet obj = bulletPool.Spawn();
                 float angle = aimmer.eulerAngles.z + Random.Range(-inaccuracy, inaccuracy);
@@ -45,7 +45,7 @@ public class PlayerAttack : MonoBehaviour
                 fireCoolDown.Reset();
             }
 
-            if (Input.GetMouseButtonDown(1) && bulletHandle.UseBullet(4))
+            if (Input.GetButtonDown("Fire2") && bulletHandle.UseBullet(4))
             {
                 Bullet2 obj = spreadPool.Spawn();
                 float angle = aimmer.eulerAngles.z + Random.Range(-inaccuracy, inaccuracy);

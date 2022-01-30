@@ -22,7 +22,7 @@ public class EnemyMovementHandle : MonoBehaviour
         aggroPoint = new List<(GameObject, float)>
         {
             ( oldman, 10 ),
-            ( child, 30 )
+            ( child, 20 )
         };
     }
 

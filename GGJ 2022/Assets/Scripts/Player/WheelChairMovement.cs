@@ -33,7 +33,7 @@ public class WheelChairMovement : MonoBehaviour
         transform.Rotate(0, 0, rotate * rotateSpeed);
         child.transform.rotation = transform.rotation;
 
-        if (stasisTimer.TimeOut && Input.GetKeyDown(KeyCode.Joystick1Button2))
+        if (stasisTimer.TimeOut && Input.GetButton("Push"))
             PushForward();
     }
 

@@ -1731,7 +1731,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletPf: {fileID: 3265507111984022208, guid: 62f920793060a3448b3ea6c34cfd4c4c, type: 3}
   cam: {fileID: 1336052051}
-  interval: 8
+  interval: 7
 --- !u!1001 &1084629246
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4683,7 +4683,7 @@ MonoBehaviour:
   bulletItemAmount: 12
   startingBullet: 24
   MagCapacity: 12
-  coolDown: 2.5
+  coolDown: 2
 --- !u!114 &1831405527
 MonoBehaviour:
   m_ObjectHideFlags: 0
