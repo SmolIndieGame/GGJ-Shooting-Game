@@ -27,6 +27,7 @@ public class EnemyHealth : MonoBehaviour
 
     public void Damage(float damage, Vector2 normal)
     {
+        ParticlePool.I.SpawnParticle(ParticleType.Blood, transform.position, normal, 0.5f);
         Sounds.I.Play(sound[Random.Range(0, sound.Length)]);
 
         curLife -= damage;
@@ -34,6 +35,9 @@ public class EnemyHealth : MonoBehaviour
         movement.AddForce(normal.normalized * -1, knockback);
         if (curLife <= 0)
         {
+            ParticlePool.I.SpawnParticle(ParticleType.Die, transform.position, normal, 5);
+            //Sounds.I.Play(sound[Random.Range(0, sound.Length)]);
+
             Scoring.I.Earn();
             self.Return();
         }

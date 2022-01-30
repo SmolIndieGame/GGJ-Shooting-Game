@@ -12,6 +12,7 @@ public class PlayerHealth : MonoBehaviour
     public Sprite emptyHeart;
     public Sprite heart;
     public AudioClip gotHit;
+    public CameraMovement camMove;
 
     public GameObject hpbar;
 
@@ -30,6 +31,8 @@ public class PlayerHealth : MonoBehaviour
     {
         this.hp --;
         UpdateHPGUI();
+        ParticlePool.I.SpawnParticle(ParticleType.Damage, transform.position, Vector3.zero, 5);
+        camMove.Shake(1f, 0.6f);
         Sounds.I.Play(gotHit);
     }
 
