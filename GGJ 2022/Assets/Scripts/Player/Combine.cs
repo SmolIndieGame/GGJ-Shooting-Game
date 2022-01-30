@@ -32,7 +32,7 @@ public class Combine : MonoBehaviour
         }
     }
 
-    void OnTriggerStay2D(Collider2D col)
+    void OnTriggerEnter2D(Collider2D col)
     {
         if(col.gameObject.CompareTag("WheelChairHandle"))
         {
