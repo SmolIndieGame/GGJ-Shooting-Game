@@ -25,13 +25,14 @@ public class Combine : MonoBehaviour
             else if (isCombinable)
             {
                 SwitchControl();
+                child.transform.up = old.transform.up;
                 wheelMode = true;
             }
 
         }
     }
 
-    void OnTriggerStay2D(Collider2D col)
+    void OnTriggerEnter2D(Collider2D col)
     {
         if(col.gameObject.CompareTag("WheelChairHandle"))
         {
