@@ -8,6 +8,7 @@ public class PlayerAttack : MonoBehaviour
     public Bullet bulletPf;
     public Bullet2 bullet2Pf;
     public Transform aimmer;
+    public CameraMovement camMove;
 
     [Header("Data")]
     public AudioClip fireSound;
@@ -40,6 +41,7 @@ public class PlayerAttack : MonoBehaviour
                 Bullet obj = bulletPool.Spawn();
                 float angle = aimmer.eulerAngles.z + Random.Range(-inaccuracy, inaccuracy);
                 obj.Setup(damage, aimmer.TransformPoint(gunOffset), (float)angle);
+                camMove.Shake(0.3f, 0.3f);
                 Sounds.I.Play(fireSound, 0.8f);
 
                 fireCoolDown.Reset();
@@ -50,8 +52,9 @@ public class PlayerAttack : MonoBehaviour
                 Bullet2 obj = spreadPool.Spawn();
                 float angle = aimmer.eulerAngles.z + Random.Range(-inaccuracy, inaccuracy);
                 obj.Setup(abilityDamage, aimmer.TransformPoint(gunOffset), (float)angle);
-                Sounds.I.Play(fireSound, 0.8f);
                 movement.Recoil(-aimmer.up);
+                camMove.Shake(0.5f, 0.4f);
+                Sounds.I.Play(fireSound, 0.8f);
 
                 fireCoolDown.Reset();
             }

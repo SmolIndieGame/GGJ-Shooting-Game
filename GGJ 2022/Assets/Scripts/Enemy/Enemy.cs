@@ -8,6 +8,7 @@ public class Enemy : MonoBehaviour, IObjectPooled<Enemy>
     EnemyMovement movement;
 
     [Header("Data")]
+    public GameObject deadEffPf;
     public float stasisTime;
     [Header("Current")]
     public Watch stasisTimer;
@@ -27,5 +28,9 @@ public class Enemy : MonoBehaviour, IObjectPooled<Enemy>
     }
     public void OnReturn() { }
 
-    public void Return() => poolHandler.Return(this);
+    public void Return()
+    {
+        poolHandler.Return(this);
+        Instantiate(deadEffPf, transform.position, transform.rotation);
+    }
 }

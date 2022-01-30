@@ -66,8 +66,11 @@ public class PlayerBulletHandle : MonoBehaviour
 
     private void Update()
     {
-        if (!reloading && bulletInBag > 0 && Input.GetButtonDown("Reload"))
-            Reload();
+        if (!reloading && Input.GetButtonDown("Reload"))
+            if (bulletInBag > 0)
+                Reload();
+            else
+                Sounds.I.Play(noBulletSound);
 
         if (reloading && reloadCoolDown.TimeOut)
         {
