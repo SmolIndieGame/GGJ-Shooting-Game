@@ -1696,7 +1696,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1034754280}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 06f5af3c208f9124bb7cfdf5f3b34d5a, type: 3}
   m_Name: 
@@ -4515,6 +4515,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0eeb8f15141d8384d80401f4d5e1cc26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  accelerationFactor: {x: 0, y: 1}
+  accelerationInput: 1
+  force: {x: 0, y: 0}
+  rotateSpeed: 1
   movementSpeed: 3.5
   childOffset: {x: 0, y: -1}
   child: {fileID: 1322434029}
@@ -4532,7 +4536,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
+  m_LinearDrag: 1
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
