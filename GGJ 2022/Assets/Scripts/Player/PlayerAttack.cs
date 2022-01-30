@@ -9,6 +9,7 @@ public class PlayerAttack : MonoBehaviour
     public Bullet2 bullet2Pf;
     public Transform aimmer;
     public CameraMovement camMove;
+    public UpdateAbility abilityUI;
 
     [Header("Data")]
     public AudioClip fireSound;
@@ -16,11 +17,13 @@ public class PlayerAttack : MonoBehaviour
     public float damage;
     public float abilityDamage;
     public float inaccuracy;
+    public float abilityCoolDown;
     public float coolDown;
 
     PoolHandler<Bullet> bulletPool;
     PoolHandler<Bullet2> spreadPool;
     Watch fireCoolDown;
+    double lastAbilityTime = 0;
 
     private void Start()
     {
@@ -30,6 +33,7 @@ public class PlayerAttack : MonoBehaviour
         bulletPool = new PoolHandler<Bullet>(bulletPf.gameObject);
         spreadPool = new PoolHandler<Bullet2>(bullet2Pf.gameObject);
         fireCoolDown = new Watch(coolDown, true, Watch.StartingState.Full);
+        abilityUI.maxCD = abilityCoolDown;
     }
 
     private void Update()
@@ -46,18 +50,19 @@ public class PlayerAttack : MonoBehaviour
 
                 fireCoolDown.Reset();
             }
+        }
 
-            if (Input.GetButtonDown("Fire2") && bulletHandle.UseBullet(4))
-            {
-                Bullet2 obj = spreadPool.Spawn();
-                float angle = aimmer.eulerAngles.z + Random.Range(-inaccuracy, inaccuracy);
-                obj.Setup(abilityDamage, aimmer.TransformPoint(gunOffset), (float)angle);
-                movement.Recoil(-aimmer.up);
-                camMove.Shake(0.5f, 0.4f);
-                Sounds.I.Play(fireSound, 0.8f);
+        if (Input.GetButtonDown("Fire2") && Time.timeAsDouble - lastAbilityTime >= abilityCoolDown)
+        {
+            Bullet2 obj = spreadPool.Spawn();
+            float angle = aimmer.eulerAngles.z + Random.Range(-inaccuracy, inaccuracy);
+            obj.Setup(abilityDamage, aimmer.TransformPoint(gunOffset), (float)angle);
+            movement.Recoil(-aimmer.up);
+            camMove.Shake(0.5f, 0.4f);
+            Sounds.I.Play(fireSound, 0.8f);
 
-                fireCoolDown.Reset();
-            }
+            lastAbilityTime = Time.timeAsDouble;
+            abilityUI.UpdateCoolDown(lastAbilityTime);
         }
     }
 }
