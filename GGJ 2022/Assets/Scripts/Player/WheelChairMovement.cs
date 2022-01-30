@@ -33,8 +33,11 @@ public class WheelChairMovement : MonoBehaviour
         transform.Rotate(0, 0, rotate * rotateSpeed);
         child.transform.rotation = transform.rotation;
 
-        if (stasisTimer.TimeOut && Input.GetButton("Push"))
-            PushForward();
+        if (stasisTimer.TimeOut)
+            if (Input.GetButton("Push"))
+                PushForward();
+            else if (Input.GetButton("Pull"))
+                PullBackward();
     }
 
     private void OnEnable()
@@ -63,6 +66,13 @@ public class WheelChairMovement : MonoBehaviour
     void PushForward()
     {
         Vector2 force = transform.up * acceleration;
+        rb.AddForce(force);
+        rb.velocity = Vector2.ClampMagnitude(rb.velocity, maxVelocity);
+    }
+
+    void PullBackward()
+    {
+        Vector2 force = -transform.up * acceleration;
         rb.AddForce(force);
         rb.velocity = Vector2.ClampMagnitude(rb.velocity, maxVelocity);
     }

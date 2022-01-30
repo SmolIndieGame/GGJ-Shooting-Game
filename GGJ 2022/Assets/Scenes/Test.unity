@@ -3061,7 +3061,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 120
+  m_SortingOrder: 150
   m_Sprite: {fileID: 21300000, guid: dfc6336b4d00ab64089c3a4f46209e0f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -4526,7 +4526,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletPf: {fileID: 3265507111984022208, guid: 62f920793060a3448b3ea6c34cfd4c4c, type: 3}
   cam: {fileID: 1336052051}
-  interval: 7
+  interval: 9
 --- !u!1001 &1084629246
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7110,7 +7110,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 150
+  m_SortingOrder: 120
   m_Sprite: {fileID: 21300000, guid: a361252811a23fb44b277687f508a3db, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -9095,7 +9095,7 @@ MonoBehaviour:
   bulletUI: {fileID: 232314043}
   noBulletSound: {fileID: 8300000, guid: d169650372a22dd44a063c3d8385630f, type: 3}
   reloadSound: {fileID: 8300000, guid: 9fe0f27774649d34f947ef658db441a7, type: 3}
-  bulletItemAmount: 12
+  bulletItemAmount: 18
   startingBullet: 24
   MagCapacity: 12
   coolDown: 2
