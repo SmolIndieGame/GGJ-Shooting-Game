@@ -4535,7 +4535,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 1
+  m_LinearDrag: 10
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
@@ -4622,6 +4622,7 @@ MonoBehaviour:
   fireSound: {fileID: 8300000, guid: 9396dc818452ebd4fbee82ec15b28ce5, type: 3}
   gunOffset: {x: -0.1, y: 0.7}
   damage: 10
+  abilityDamage: 7
   inaccuracy: 3
   coolDown: 0.3
 --- !u!114 &1831405524
