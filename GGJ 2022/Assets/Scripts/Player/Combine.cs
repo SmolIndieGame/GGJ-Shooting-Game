@@ -15,7 +15,7 @@ public class Combine : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetButtonDown("Fire3"))
+        if (Input.GetKeyDown(KeyCode.Joystick1Button1))
         {
             if (wheelMode)
             {

@@ -65,8 +65,8 @@ public class PlayerBulletHandle : MonoBehaviour
 
     private void Update()
     {
-        //if (!reloading && bulletInBag > 0 && Input.GetButtonDown("Fire2"))
-         //   Reload();
+        if (!reloading && bulletInBag > 0 && Input.GetMouseButtonDown(2))
+            Reload();
 
         if (reloading && reloadCoolDown.TimeOut)
         {

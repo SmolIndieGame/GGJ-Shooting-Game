@@ -4515,13 +4515,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0eeb8f15141d8384d80401f4d5e1cc26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  accelerationInput: 1
-  velo: {x: 0, y: 0}
-  rotateSpeed: 1
-  movementSpeed: 3.5
+  acceleration: 5
+  maxVelocity: 3.5
+  rotateSpeed: 1.5
   childOffset: {x: 0, y: -1}
   child: {fileID: 1322434029}
   rb: {fileID: 1831405519}
+  stasisTime: 0.2
 --- !u!50 &1831405519
 Rigidbody2D:
   serializedVersion: 4
@@ -4535,7 +4535,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 10
+  m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}

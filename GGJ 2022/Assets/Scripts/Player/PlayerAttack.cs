@@ -3,6 +3,7 @@ using UnityEngine;
 public class PlayerAttack : MonoBehaviour
 {
     PlayerBulletHandle bulletHandle;
+    WheelChairMovement movement;
 
     public Bullet bulletPf;
     public Bullet2 bullet2Pf;
@@ -23,6 +24,7 @@ public class PlayerAttack : MonoBehaviour
     private void Start()
     {
         bulletHandle = GetComponent<PlayerBulletHandle>();
+        movement = GetComponent<WheelChairMovement>();
 
         bulletPool = new PoolHandler<Bullet>(bulletPf.gameObject);
         spreadPool = new PoolHandler<Bullet2>(bullet2Pf.gameObject);
@@ -33,7 +35,7 @@ public class PlayerAttack : MonoBehaviour
     {
         if (fireCoolDown.TimeOut)
         {
-            if (Input.GetButtonDown("Fire1") && bulletHandle.UseBullet())
+            if (Input.GetMouseButtonDown(0) && bulletHandle.UseBullet())
             {
                 Bullet obj = bulletPool.Spawn();
                 float angle = aimmer.eulerAngles.z + Random.Range(-inaccuracy, inaccuracy);
@@ -42,14 +44,15 @@ public class PlayerAttack : MonoBehaviour
 
                 fireCoolDown.Reset();
             }
-            if (Input.GetButtonDown("Fire2") && bulletHandle.UseBullet(4))
+
+            if (Input.GetMouseButtonDown(1) && bulletHandle.UseBullet(4))
             {
                 Bullet2 obj = spreadPool.Spawn();
                 float angle = aimmer.eulerAngles.z + Random.Range(-inaccuracy, inaccuracy);
                 obj.Setup(abilityDamage, aimmer.TransformPoint(gunOffset), (float)angle);
                 Sounds.I.Play(fireSound, 0.8f);
-                GetComponent<Rigidbody2D>().AddForce(-aimmer.up * 1200);
-                
+                movement.Recoil(-aimmer.up);
+
                 fireCoolDown.Reset();
             }
         }

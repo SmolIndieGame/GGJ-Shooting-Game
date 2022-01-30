@@ -5,43 +5,54 @@ using UnityEngine;
 public class WheelChairMovement : MonoBehaviour
 {
     [Header("Force")]
-    public float accelerationInput;
-    Vector2 velo;
-    Vector2 force;
-    Vector2 brakeForce;
+    public float acceleration;
+    public float maxVelocity;
 
     [Header("WheelChairMovement")]
     public float rotateSpeed;
-    public float movementSpeed = 5f;
     public Vector2 childOffset;
     public GameObject child;
     public Rigidbody2D rb;
 
-    Vector2 movement;
+    float rotate;
+
+    [Header("Data")]
+    public float stasisTime;
+    [Header("Current")]
+    public Watch stasisTimer;
+
+    private void Awake()
+    {
+        stasisTimer = new Watch(stasisTime, true, Watch.StartingState.Full);
+    }
 
     void Update()
     {
-        movement.x = Input.GetAxisRaw("Horizontal") * -1;
-        movement.y = Input.GetAxisRaw("Vertical") * -1;
+        rotate = Input.GetAxis("Horizontal") * -1;
 
-        if (movement != Vector2.zero)
-        {
-            float angle = movement.x * rotateSpeed;
-            transform.Rotate(0,0,angle);
-            child.transform.Rotate(0,0,angle);
-        }
+        transform.Rotate(0, 0, rotate * rotateSpeed);
+        child.transform.rotation = transform.rotation;
 
-        if (Input.GetButton("Fire1"))
-        {
+        if (stasisTimer.TimeOut && Input.GetKeyDown(KeyCode.Joystick1Button2))
             PushForward();
-        }
+    }
 
-        if (Input.GetButton("Brake"))
-        {
-            //Brake();
-        }
+    private void OnEnable()
+    {
+        rb.drag = 6;
+    }
 
-        velo = rb.velocity;
+    private void OnDisable()
+    {
+        if (stasisTimer.TimeOut)
+            rb.drag = 0.7f;
+    }
+
+    public void Recoil(Vector2 direction)
+    {
+        rb.drag = 6;
+        stasisTimer.Reset();
+        rb.AddForce(direction * 700);
     }
 
     void LateUpdate()
@@ -51,17 +62,8 @@ public class WheelChairMovement : MonoBehaviour
 
     void PushForward()
     {
-        force = (Vector2)transform.up * accelerationInput;
+        Vector2 force = transform.up * acceleration;
         rb.AddForce(force);
-    }
-
-    void Brake()
-    {
-        if(force != Vector2.zero)
-        {
-            Debug.Log("Brake");
-            brakeForce = (Vector2)transform.up * accelerationInput * -1 * 2;
-            rb.AddForce(brakeForce);
-        }
+        rb.velocity = Vector2.ClampMagnitude(rb.velocity, maxVelocity);
     }
 }
