@@ -25,6 +25,7 @@ public class Combine : MonoBehaviour
             else if (isCombinable)
             {
                 SwitchControl();
+                child.transform.up = old.transform.up;
                 wheelMode = true;
             }
 
