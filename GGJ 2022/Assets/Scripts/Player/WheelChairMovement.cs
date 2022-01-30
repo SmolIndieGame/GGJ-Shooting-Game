@@ -20,6 +20,8 @@ public class WheelChairMovement : MonoBehaviour
     public float stasisTime;
     [Header("Current")]
     public Watch stasisTimer;
+    bool pushing;
+    bool pulling;
 
     private void Awake()
     {
@@ -33,16 +35,15 @@ public class WheelChairMovement : MonoBehaviour
         transform.Rotate(0, 0, rotate * rotateSpeed);
         child.transform.rotation = transform.rotation;
 
-        if (stasisTimer.TimeOut)
-            if (Input.GetButton("Push"))
-                PushForward();
-            else if (Input.GetButton("Pull"))
-                PullBackward();
+        pushing = Input.GetButton("Push");
+        pulling = Input.GetButton("Pull");
+
+        //rb.velocity = Vector2.zero;// Vector2.ClampMagnitude(rb.velocity, maxVelocity);
     }
 
     private void OnEnable()
     {
-        rb.drag = 6;
+        rb.drag = 6f;
     }
 
     private void OnDisable()
@@ -58,6 +59,15 @@ public class WheelChairMovement : MonoBehaviour
         rb.AddForce(direction * 700);
     }
 
+    private void FixedUpdate()
+    {
+        if (!stasisTimer.TimeOut) return;
+
+        if (pushing) PushForward();
+        if (pulling) PullBackward();
+        //rb.velocity = Vector2.zero;
+    }
+
     void LateUpdate()
     {
         child.transform.position = (Vector2)transform.TransformPoint(childOffset);
@@ -67,13 +77,11 @@ public class WheelChairMovement : MonoBehaviour
     {
         Vector2 force = transform.up * acceleration;
         rb.AddForce(force);
-        rb.velocity = Vector2.ClampMagnitude(rb.velocity, maxVelocity);
     }
 
     void PullBackward()
     {
         Vector2 force = -transform.up * acceleration;
         rb.AddForce(force);
-        rb.velocity = Vector2.ClampMagnitude(rb.velocity, maxVelocity);
     }
 }
