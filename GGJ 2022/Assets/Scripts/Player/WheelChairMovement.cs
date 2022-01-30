@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class WheelChairMovement : MonoBehaviour
 {
-    [Header("Testing force")]
-    public Vector2 accelerationFactor;
+    [Header("Force")]
     public float accelerationInput;
-    public Vector2 force;
+    Vector2 velo;
+    Vector2 force;
+    Vector2 brakeForce;
 
     [Header("WheelChairMovement")]
     public float rotateSpeed;
@@ -21,26 +22,26 @@ public class WheelChairMovement : MonoBehaviour
     void Update()
     {
         movement.x = Input.GetAxisRaw("Horizontal") * -1;
-        //movement.y = Input.GetAxisRaw("Vertical") * -1;
+        movement.y = Input.GetAxisRaw("Vertical") * -1;
 
         if (movement != Vector2.zero)
         {
             float angle = movement.x * rotateSpeed;
             transform.Rotate(0,0,angle);
-            child.transform.up = movement;
+            child.transform.Rotate(0,0,angle);
         }
 
         if (Input.GetButton("Fire1"))
         {
-            Debug.Log("test");
             PushForward();
         }
-    }
 
-    void FixedUpdate()
-    {
-        //rb.MovePosition(rb.position + movementSpeed * Time.fixedDeltaTime * movement.normalized);
-        //PushForward();
+        if (Input.GetButton("Brake"))
+        {
+            //Brake();
+        }
+
+        velo = rb.velocity;
     }
 
     void LateUpdate()
@@ -50,9 +51,17 @@ public class WheelChairMovement : MonoBehaviour
 
     void PushForward()
     {
-        Debug.Log("Apply force");
         force = (Vector2)transform.up * accelerationInput;
-        Debug.Log(force);
         rb.AddForce(force);
+    }
+
+    void Brake()
+    {
+        if(force != Vector2.zero)
+        {
+            Debug.Log("Brake");
+            brakeForce = (Vector2)transform.up * accelerationInput * -1 * 2;
+            rb.AddForce(brakeForce);
+        }
     }
 }
