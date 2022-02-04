@@ -7,6 +7,7 @@ public class MovementConstaint : MonoBehaviour
     const float PLAYER_SIZE = 1;
 
     public Camera cam;
+    public new Rigidbody2D rigidbody;
     Bounds screenBound;
 
     private void Start()
@@ -18,6 +19,6 @@ public class MovementConstaint : MonoBehaviour
 
     private void LateUpdate()
     {
-        transform.position = (Vector2)screenBound.ClosestPoint(transform.position);
+        rigidbody.position = (Vector2)screenBound.ClosestPoint(transform.position);
     }
 }

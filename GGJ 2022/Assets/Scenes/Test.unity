@@ -4498,6 +4498,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyPf: {fileID: 6002122021162111092, guid: 4459edcdd6ecd9845af03ad3cb647ae8, type: 3}
   cam: {fileID: 1336052051}
+  spawnedEnemies: []
 --- !u!4 &1034754282
 Transform:
   m_ObjectHideFlags: 0
@@ -5822,6 +5823,7 @@ GameObject:
   - component: {fileID: 1322434036}
   - component: {fileID: 1322434037}
   - component: {fileID: 1322434039}
+  - component: {fileID: 1322434040}
   m_Layer: 3
   m_Name: Child
   m_TagString: Player
@@ -5992,6 +5994,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cam: {fileID: 1336052051}
+  rigidbody: {fileID: 1322434030}
+--- !u!114 &1322434040
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1322434029}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5bd5e1dfea54ea648bb0fa2be2c85ae2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cam: {fileID: 1336052051}
+  enemySpawner: {fileID: 1034754281}
 --- !u!1 &1326992668
 GameObject:
   m_ObjectHideFlags: 0
@@ -9010,7 +9027,7 @@ MonoBehaviour:
   gameOver: {fileID: 1611035583}
   hp: 3
   immutableTime: 1
-  immutable: 0
+  immutable: 1
   emptyHeart: {fileID: 21300000, guid: 44245c561a9231344a006fd214352819, type: 3}
   heart: {fileID: 21300000, guid: 2ce32e4b7b4246247b06f9065ac57dd3, type: 3}
   gotHit: {fileID: 8300000, guid: 19c8fce3c9e07754bbb6e78f7647fed4, type: 3}
@@ -9112,6 +9129,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cam: {fileID: 1336052051}
+  rigidbody: {fileID: 1831405519}
 --- !u!1 &1896981159
 GameObject:
   m_ObjectHideFlags: 0

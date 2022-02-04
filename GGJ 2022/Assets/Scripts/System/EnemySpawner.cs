@@ -7,6 +7,8 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] Enemy enemyPf;
     [SerializeField] Camera cam;
 
+    public List<Enemy> spawnedEnemies;
+
     PoolHandler<Enemy> poolHandler;
     Watch watch;
 
@@ -40,6 +42,7 @@ public class EnemySpawner : MonoBehaviour
             pos = cam.ViewportToWorldPoint(pos);
 
             Enemy enemy = poolHandler.Spawn();
+            spawnedEnemies.Add(enemy);
             enemy.transform.position = pos;
 
             watch.Reset();

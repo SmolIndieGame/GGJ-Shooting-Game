@@ -6,6 +6,7 @@ public class Combine : MonoBehaviour
 {
     public bool isCombinable;
     public bool wheelMode;
+    IChildInput input;
     public PlayerMovement child;
     public WheelChairMovement old;
     public PlayerPickUpBullet childHand;
@@ -13,9 +14,14 @@ public class Combine : MonoBehaviour
 
     public Collider2D childCol;
 
+    private void Start()
+    {
+        input = GetComponent<IChildInput>();
+    }
+
     void Update()
     {
-        if (Input.GetButtonDown("Combine"))
+        if (input.Combine)
         {
             if (wheelMode)
             {
